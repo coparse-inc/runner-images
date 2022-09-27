@@ -215,7 +215,6 @@ build {
   provisioner "powershell" {
     scripts = [
       "${path.root}/scripts/Installers/Install-VCRedist.ps1",
-      "${path.root}/scripts/Installers/Install-Docker.ps1",
       "${path.root}/scripts/Installers/Install-PowershellCore.ps1",
       "${path.root}/scripts/Installers/Install-WebPlatformInstaller.ps1"
     ]
