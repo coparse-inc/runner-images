@@ -164,6 +164,10 @@ build {
     source      = "${path.root}/post-generation"
   }
   provisioner "file" {
+    source      = "${path.root}/scripts/Tests"
+    destination = "${var.image_folder}"
+  }
+  provisioner "file" {
     destination = "${var.image_folder}\\toolset.json"
     source      = "${path.root}/toolsets/toolset-2019.json"
   }
