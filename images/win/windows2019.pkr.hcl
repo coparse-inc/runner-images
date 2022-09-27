@@ -39,7 +39,7 @@ variable "region" {
 variable "instance_type" {
   description = "The instance type Packer will use for the builder"
   type        = string
-  default     = "t3a.medium"
+  default     = "c5n.4xlarge"
 }
 
 variable "ebs_delete_on_termination" {
@@ -127,6 +127,7 @@ source "amazon-ebs" "githubrunner" {
 
   launch_block_device_mappings {
     device_name           = "/dev/sda1"
+    volume_size           = 150
     delete_on_termination = "${var.ebs_delete_on_termination}"
   }
 }
@@ -215,6 +216,7 @@ build {
   provisioner "powershell" {
     scripts = [
       "${path.root}/scripts/Installers/Install-VCRedist.ps1",
+      /* "${path.root}/scripts/Installers/Install-Docker.ps1", */
       "${path.root}/scripts/Installers/Install-PowershellCore.ps1",
       "${path.root}/scripts/Installers/Install-WebPlatformInstaller.ps1"
     ]
