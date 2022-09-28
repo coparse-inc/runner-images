@@ -40,16 +40,16 @@ Describe "Java" {
         $result.Output[0] | Should -Match $outputPattern
     }
 
-    It "Java Adopt Jdk <Version>" -TestCases $adoptJdkVersions {
-        $adoptPath = Join-Path (Get-ChildItem ${env:AGENT_TOOLSDIRECTORY}\Java_Adopt_jdk\${Version}*) "x64\bin\java"
+    # It "Java Adopt Jdk <Version>" -TestCases $adoptJdkVersions {
+    #     $adoptPath = Join-Path (Get-ChildItem ${env:AGENT_TOOLSDIRECTORY}\Java_Adopt_jdk\${Version}*) "x64\bin\java"
 
-        $result = Get-CommandResult "`"$adoptPath`" -version"
-        $result.ExitCode | Should -Be 0
+    #     $result = Get-CommandResult "`"$adoptPath`" -version"
+    #     $result.ExitCode | Should -Be 0
 
-        if ($Version -eq 8) {
-            $Version = "1.${Version}"
-        }
-        $outputPattern = "openjdk version `"${Version}"
-        $result.Output[0] | Should -Match $outputPattern
-    }
+    #     if ($Version -eq 8) {
+    #         $Version = "1.${Version}"
+    #     }
+    #     $outputPattern = "openjdk version `"${Version}"
+    #     $result.Output[0] | Should -Match $outputPattern
+    # }
 }

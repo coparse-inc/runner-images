@@ -30,7 +30,7 @@ Function Install-Asset {
 }
 
 # Get toolcache content from toolset
-$ToolsToInstall = @("Python", "Node", "Boost", "Go")
+$ToolsToInstall = @("Python", "Node")
 
 $tools = Get-ToolsetContent | Select-Object -ExpandProperty toolcache | Where {$ToolsToInstall -contains $_.Name}
 

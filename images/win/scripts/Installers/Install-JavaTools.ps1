@@ -126,9 +126,9 @@ foreach ($jdkVendor in $jdkVendors) {
 
 # Setup JAVA_HOME_13_X64 as this is the only Adopt version needed
 # There is no jdk 13 on Windows 2022
-if (-not (Test-IsWin22)) {
-    Set-JavaPath -Version "13" -VendorName "Adopt"
-}
+#if (-not (Test-IsWin22)) {
+#    Set-JavaPath -Version "13" -VendorName "Adopt"
+#}
 
 # Install Java tools
 # Force chocolatey to ignore dependencies on Ant and Maven or else they will download the Oracle JDK

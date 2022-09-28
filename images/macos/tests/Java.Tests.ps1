@@ -29,9 +29,9 @@ Describe "Java" {
     $javaVendors = $toolsetJava.vendors
 
     [array]$jdkVersions = ($javaVendors | Where-Object {$_.name -eq $defaultVendor}).versions
-    [array]$adoptJdkVersions = ($javaVendors | Where-Object {$_.name -eq "Adopt"}).versions
+    #[array]$adoptJdkVersions = ($javaVendors | Where-Object {$_.name -eq "Adopt"}).versions
 
-    $adoptCases = $adoptJdkVersions | ForEach-Object { @{Version = $_} }
+    #$adoptCases = $adoptJdkVersions | ForEach-Object { @{Version = $_} }
     $testCases = $jdkVersions | ForEach-Object { @{ Title = $_; Version = (Get-NativeVersionFormat $_); EnvVariable = "JAVA_HOME_${_}_X64" } }
     $testCases += @{ Title = "Default"; Version = (Get-NativeVersionFormat $defaultVersion); EnvVariable = "JAVA_HOME" }
 
@@ -55,16 +55,16 @@ Describe "Java" {
         }
     }
 
-    Context "Java Adopt" {
-        Describe "Java Adopt" {
-                It "Java Adopt <Version>" -TestCases $adoptCases {
-                $adoptPath = Join-Path (Get-ChildItem ${env:AGENT_TOOLSDIRECTORY}\Java_Adopt_jdk\${Version}*) "x64\Contents\Home\bin\java"
+    #Context "Java Adopt" {
+    #    Describe "Java Adopt" {
+    #            It "Java Adopt <Version>" -TestCases $adoptCases {
+    #            $adoptPath = Join-Path (Get-ChildItem ${env:AGENT_TOOLSDIRECTORY}\Java_Adopt_jdk\${Version}*) "x64\Contents\Home\bin\java"
 
-                $result = Get-CommandResult "`"$adoptPath`" -version"
-                $result.ExitCode | Should -Be 0
-            }
-        }
-    }
+    #            $result = Get-CommandResult "`"$adoptPath`" -version"
+    #            $result.ExitCode | Should -Be 0
+    #        }
+    #    }
+    #}
 
     Context "Maven" {
         Describe "Maven" {

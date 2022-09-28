@@ -216,7 +216,6 @@ build {
   provisioner "powershell" {
     scripts = [
       "${path.root}/scripts/Installers/Install-VCRedist.ps1",
-      /* "${path.root}/scripts/Installers/Install-Docker.ps1", */
       "${path.root}/scripts/Installers/Install-PowershellCore.ps1",
       "${path.root}/scripts/Installers/Install-WebPlatformInstaller.ps1"
     ]
@@ -237,7 +236,6 @@ build {
   provisioner "powershell" {
     scripts = [
       "${path.root}/scripts/Installers/Install-Wix.ps1",
-      "${path.root}/scripts/Installers/Install-WDK.ps1",
       "${path.root}/scripts/Installers/Install-Vsix.ps1",
       "${path.root}/scripts/Installers/Install-CommonUtils.ps1",
       "${path.root}/scripts/Installers/Install-JavaTools.ps1"
@@ -252,7 +250,6 @@ build {
       "${path.root}/scripts/Installers/Configure-Toolset.ps1",
       "${path.root}/scripts/Installers/Install-NodeLts.ps1",
       "${path.root}/scripts/Installers/Install-Git.ps1",
-      "${path.root}/scripts/Installers/Install-Msys2.ps1",
       "${path.root}/scripts/Installers/Install-AWS.ps1",
       "${path.root}/scripts/Installers/Install-DotnetSDK.ps1",
       "${path.root}/scripts/Installers/Install-Mingw64.ps1",
@@ -291,24 +288,6 @@ build {
     scripts = [
       "${path.root}/scripts/Installers/Wait-WindowsUpdatesForInstall.ps1",
     ]
-  }
-  provisioner "powershell" {
-    environment_vars = [
-      "IMAGE_VERSION=${var.image_version}"
-    ]
-    inline = [
-      "pwsh -File '${var.image_folder}\\SoftwareReport\\SoftwareReport.Generator.ps1'"
-    ]
-  }
-  provisioner "powershell" {
-    inline = [
-      "if (-not (Test-Path C:\\InstalledSoftware.md)) { throw 'C:\\InstalledSoftware.md not found' }"
-    ]
-  }
-  provisioner "file" {
-    destination = "${path.root}/Windows2019-Readme.md"
-    direction   = "download"
-    source      = "C:\\InstalledSoftware.md"
   }
   provisioner "powershell" {
     scripts = [

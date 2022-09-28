@@ -98,14 +98,12 @@
         "edition" : "Community",
         "channel": "release",
         "workloads": [
-            "Microsoft.Component.VC.Runtime.UCRTSDK",
             "Microsoft.VisualStudio.Component.VC.ATLMFC",
+            "Microsoft.VisualStudio.Component.Windows10SDK.20348",
+            "Microsoft.VisualStudio.Component.Windows11SDK.22000",
             "Microsoft.VisualStudio.Workload.NativeDesktop"
         ],
-        "vsix": [
-            "VisualStudioClient.MicrosoftVisualStudio2017InstallerProjects",
-            "WixToolset.WixToolsetVisualStudio2019Extension"
-        ]
+        "vsix": []
     },
     "npm": {
         "global_packages": [
@@ -138,7 +136,6 @@
                 "name": "cmake.install",
                 "args": [ "--installargs", "ADD_CMAKE_TO_PATH=\"System\"" ]
             },
-            { "name": "imagemagick" },
             { "name": "imdisk" }
         ]
     },

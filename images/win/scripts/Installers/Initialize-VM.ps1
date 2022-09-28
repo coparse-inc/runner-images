@@ -43,8 +43,8 @@ function Disable-WindowsUpdate {
 # Enable $ErrorActionPreference='Stop' for AllUsersAllHosts
 Add-Content -Path $profile.AllUsersAllHosts -Value '$ErrorActionPreference="Stop"'
 
-Write-Host "Disable Server Manager on Logon"
-Get-ScheduledTask -TaskName ServerManager | Disable-ScheduledTask
+#Write-Host "Disable Server Manager on Logon"
+#Get-ScheduledTask -TaskName ServerManager | Disable-ScheduledTask
 
 Write-Host "Disable 'Allow your PC to be discoverable by other PCs' popup"
 New-Item -Path HKLM:\System\CurrentControlSet\Control\Network -Name NewNetworkWindowOff -Force
@@ -58,8 +58,8 @@ Disable-UserAccessControl
 Write-Host "Disable IE Welcome Screen"
 Disable-InternetExplorerWelcomeScreen
 
-Write-Host "Disable IE ESC"
-Disable-InternetExplorerESC
+# Write-Host "Disable IE ESC"
+# Disable-InternetExplorerESC
 
 Write-Host "Setting local execution policy"
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine  -ErrorAction Continue | Out-Null
@@ -70,7 +70,7 @@ Write-Host "Enable long path behavior"
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
 
 # Expand disk size of OS drive
-$driveLetter = "C"
-$size = Get-PartitionSupportedSize -DriveLetter $driveLetter
-Resize-Partition -DriveLetter $driveLetter -Size $size.SizeMax
-Get-Volume | Select-Object DriveLetter, SizeRemaining, Size | Sort-Object DriveLetter
+#$driveLetter = "C"
+#$size = Get-PartitionSupportedSize -DriveLetter $driveLetter
+#Resize-Partition -DriveLetter $driveLetter -Size $size.SizeMax
+#Get-Volume | Select-Object DriveLetter, SizeRemaining, Size | Sort-Object DriveLetter
