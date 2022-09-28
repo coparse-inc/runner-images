@@ -130,6 +130,11 @@ source "amazon-ebs" "githubrunner" {
     volume_size           = 150
     delete_on_termination = "${var.ebs_delete_on_termination}"
   }
+
+  aws_polling {
+    delay_seconds = 40
+    max_attempts  = 100
+  }
 }
 
 # a build block invokes sources and runs provisioning steps on them. The
