@@ -232,6 +232,7 @@ build {
     elevated_password = "${var.install_password}"
     elevated_user     = "${var.install_user}"
     scripts = [
+      "${path.root}/scripts/Installers/Install-Imdisk.ps1",
       "${path.root}/scripts/Installers/Install-VS.ps1",
       "${path.root}/scripts/Installers/Install-NET48.ps1"
     ]
